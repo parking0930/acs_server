@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.infoserver.mapper.AutorizedMapper">
+	<select id="checkAuthorizedById" parameterType="String" resultType="int">
+		select count(*) from authorized where id = #{id};
+	</select>
+	
+	<select id="selectAutorizedById" parameterType="String" resultType="com.infoserver.domain.AuthorizedVO">
+		select * from authorized where id = #{id};
+	</select>
+
+	<insert id="insertAuthorized">
+		insert into authorized(id, name, position) values(#{id}, #{name}, #{position});
+	</insert>
+	
+	<select id="getLog" resultType="com.infoserver.domain.LogVO">
+		select * from log;
+	</select>
+	
+	<insert id="insertLog">
+		insert into log(uid, name, picture, allow) values(#{uid}, #{name}, #{picture}, #{allow});
+	</insert>
+</mapper>
